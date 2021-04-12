@@ -9,12 +9,12 @@ def getInput():
     return userInput
 
 def checkInput(userInput):
-    for x in userInput:
-        if x not in colors:
-            print("\nInvalid input! Please enter the colors in the list below only. Thanks")
-            print(colors)
-            userInput = checkInput(getInput())
-            break
+#    for x in userInput:
+#        if x not in colors:
+#            print("\nInvalid input! Please enter the colors in the list below only. Thanks")
+#            print(colors)
+#            userInput = checkInput(getInput())
+#           break
     if(len(userInput) < 4):
         print("\nLess than 4 inputs, let's try again :)")
         userInput = checkInput(getInput())
@@ -23,21 +23,87 @@ def checkInput(userInput):
         # userInput = userInput[:6]
         print("\nMore than 6 inputs, please check again :)")
         userInput = checkInput(getInput())  
+        
+    elif(len(userInput) == 4):
+        if userInput[0] not in num_code.keys():
+            print("\nInvalid 1st color input! Please enter the colors in the list below only. Thanks")
+            print(num_code.keys())
+            userInput = checkInput(getInput())
+            
+        elif userInput[1] not in num_code.keys():
+            print("\nInvalid 2nd color input! Please enter the colors in the list below only. Thanks")
+            print(num_code.keys())
+            userInput = checkInput(getInput())
+            
+        elif userInput[2] not in multiplier.keys():
+            print("\nInvalid 3rd color input! Please enter the colors in the list below only. Thanks")
+            print(multiplier.keys())
+            userInput = checkInput(getInput())
+            
+        elif userInput[3] not in tolerance.keys():
+            print("\nInvalid 4th color input! Please enter the colors in the list below only. Thanks")
+            print(tolerance.keys())
+            userInput = checkInput(getInput())
+    
+    elif(len(userInput) == 5) or (len(userInput) == 6):
+           
+        if userInput[0] not in num_code.keys():
+            print("\nInvalid 1st color input! Please enter the colors in the list below only. Thanks")
+            print(num_code.keys())
+            userInput = checkInput(getInput())
+            
+        elif userInput[1] not in num_code.keys():
+            print("\nInvalid 2nd color input! Please enter the colors in the list below only. Thanks")
+            print(num_code.keys())
+            userInput = checkInput(getInput())
+            
+        elif userInput[2] not in num_code.keys():
+            print("\nInvalid 3rd color input! Please enter the colors in the list below only. Thanks")
+            print(num_code.keys())
+            userInput = checkInput(getInput())
+            
+        elif userInput[3] not in multiplier.keys():
+            print("\nInvalid 4th color input! Please enter the colors in the list below only. Thanks")
+            print(multiplier.keys())
+            userInput = checkInput(getInput())
+            
+        elif userInput[4] not in tolerance.keys():
+            print("\nInvalid 5th color input! Please enter the colors in the list below only. Thanks")
+            print(tolerance.keys())
+            userInput = checkInput(getInput())
+            
+        if (len(userInput) == 6):
+            if userInput[5] not in ppm.keys():
+                print("\nInvalid 6th color input! Please enter the colors in the list below only. Thanks")
+                print(ppm.keys())
+                userInput = checkInput(getInput())
+                
     return userInput
 
-colors = [
-        'black',
-        'brown',
-        'red',
-        'orange',
-        'yellow',
-        'green',
-        'blue',
-        'violet',
-        'grey',
-        'white',
-        'gold',
-        'silver']
+def simplify_ans (Rvalue):
+    if Rvalue >= 1000000000:
+        ans = str(Rvalue/1000000000) + "G Ohm"
+    elif 1000000 <= Rvalue <=1000000000:
+        ans = str(Rvalue/1000000000) + "M Ohm"
+    elif 1000 <= Rvalue <=1000000:
+        ans = str(Rvalue/1000) + "k Ohm"
+    elif 0 <= Rvalue <=1000:
+        ans = str(Rvalue/1000) + "Ohm"
+    return ans
+
+#colors = [
+#       'black',
+#        'brown',
+#        'red',
+#        'orange',
+#        'yellow',
+#        'green',
+#        'blue',
+#        'violet',
+#        'grey',
+#        'white',
+#       'gold',
+#        'silver']
 num_code = {
         'black': '0',
         'brown': '1',
@@ -84,35 +150,47 @@ ppm = {
     'violet' : '5ppm'
     }
 
-print ("######## Resistor Color Code Calculator #######")
-userInput = checkInput(getInput())
+while(1):
+    print ("######## Resistor Color Code Calculator #######")
+    userInput = checkInput(getInput())
 
-if(len(userInput) == 4):
-    x1 = int(num_code[userInput[0]])
-    x2 = int(num_code[userInput[1]])
-    x3 = float(multiplier[userInput[2]])
-    x4 = tolerance[userInput[3]]
+    if(len(userInput) == 4):
+        x1 = int(num_code[userInput[0]])
+        x2 = int(num_code[userInput[1]])
+        x3 = float(multiplier[userInput[2]])
+        x4 = tolerance[userInput[3]]
     
-    Rvalue = ((x1*10)+x2)*x3
-    print("The 4 Band Resistor value is {} Ohms {} ".format(Rvalue,x4))
+        Rvalue = ((x1*10)+x2)*x3
+        ans = simplify_ans(Rvalue)
+        print("The 4 Band Resistor value is {} {} ".format(ans,x4))
     
-elif(len(userInput) == 5):
-    x1 = int(num_code[userInput[0]])
-    x2 = int(num_code[userInput[1]])
-    x3 = int(num_code[userInput[2]])
-    x4 = float(multiplier[userInput[3]])
-    x5 = tolerance[userInput[4]]
+    elif(len(userInput) == 5):
+        x1 = int(num_code[userInput[0]])
+        x2 = int(num_code[userInput[1]])
+        x3 = int(num_code[userInput[2]])
+        x4 = float(multiplier[userInput[3]])
+        x5 = tolerance[userInput[4]]
     
-    Rvalue = ((x1*100)+(x2*10)+x3)*x4
-    print("The 5 Band Resistor value is {} Ohms {} ".format(Rvalue,x5))
+        Rvalue = ((x1*100)+(x2*10)+x3)*x4
+        ans = simplify_ans(Rvalue)
+        print("The 5 Band Resistor value is {} {} ".format(ans,x5))
 
-elif(len(userInput) == 6):
-    x1 = int(num_code[userInput[0]])
-    x2 = int(num_code[userInput[1]])
-    x3 = int(num_code[userInput[2]])
-    x4 = float(multiplier[userInput[3]])
-    x5 = tolerance[userInput[4]]
-    x6 = ppm[userInput[5]]
+    elif(len(userInput) == 6):
+        x1 = int(num_code[userInput[0]])
+        x2 = int(num_code[userInput[1]])
+        x3 = int(num_code[userInput[2]])
+        x4 = float(multiplier[userInput[3]])
+        x5 = tolerance[userInput[4]]
+        x6 = ppm[userInput[5]]
     
-    Rvalue = ((x1*100)+(x2*10)+x3)*x4
-    print("The 6 Band Resistor value is {} Ohms {} {} ".format(Rvalue,x5,x6))
+        Rvalue = ((x1*100)+(x2*10)+x3)*x4
+        ans = simplify_ans(Rvalue)
+        print("The 6 Band Resistor value is {} {} {} ".format(ans,x5,x6))
+    
+    recalc = input("Do you want to calculate another resistor value? (y/n) : ")
+    if(recalc == 'n'):
+        print("\nByeBye")
+        break
+    else:
+        print("\n")
+           
