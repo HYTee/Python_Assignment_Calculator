@@ -52,5 +52,69 @@ num_code = {
         }
 print ("######## Resistor Color Code Calculator #######")
 userInput = checkInput(getInput())
-print(userInput)
-print(num_code)
+multiplier = {
+        'black': '1',
+        'brown': '10',
+        'red': '100',
+        'orange':'1000',
+        'yellow':'10000',
+        'green':'100000',
+        'blue':'1000000',
+        'violet':'10000000',
+        'grey':'100000000',
+        'white':'1000000000',
+        'gold': '0.1',
+        'silver': '0.01'
+         }
+tolerance = {
+    'brown' : '+-1%',
+    'red' : '+-2%',
+    'green' : '+-0.5%',
+    'blue' : '+-0.25%',
+    'violet' : '+-0.1%',
+    'grey' : '+-0.05%',
+    'gold' : '+-5%',
+    'silver' : '+-10%'
+}
+
+ppm = {
+    'brown' : '100ppm',
+    'red' : '50ppm',
+    'orange' : '15ppm',
+    'yellow' : '25ppm',
+    'blue' : '10ppm',
+    'violet' : '5ppm'
+    }
+
+print ("######## Resistor Color Code Calculator #######")
+userInput = checkInput(getInput())
+
+if(len(userInput) == 4):
+    x1 = int(num_code[userInput[0]])
+    x2 = int(num_code[userInput[1]])
+    x3 = float(multiplier[userInput[2]])
+    x4 = tolerance[userInput[3]]
+    
+    Rvalue = ((x1*10)+x2)*x3
+    print("The 4 Band Resistor value is {} Ohms {} ".format(Rvalue,x4))
+    
+elif(len(userInput) == 5):
+    x1 = int(num_code[userInput[0]])
+    x2 = int(num_code[userInput[1]])
+    x3 = int(num_code[userInput[2]])
+    x4 = float(multiplier[userInput[3]])
+    x5 = tolerance[userInput[4]]
+    
+    Rvalue = ((x1*100)+(x2*10)+x3)*x4
+    print("The 5 Band Resistor value is {} Ohms {} ".format(Rvalue,x5))
+
+elif(len(userInput) == 6):
+    x1 = int(num_code[userInput[0]])
+    x2 = int(num_code[userInput[1]])
+    x3 = int(num_code[userInput[2]])
+    x4 = float(multiplier[userInput[3]])
+    x5 = tolerance[userInput[4]]
+    x6 = ppm[userInput[5]]
+    
+    Rvalue = ((x1*100)+(x2*10)+x3)*x4
+    print("The 6 Band Resistor value is {} Ohms {} {} ".format(Rvalue,x5,x6))
