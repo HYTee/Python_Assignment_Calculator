@@ -50,8 +50,6 @@ num_code = {
         'grey':'8',
         'white':'9'
         }
-print ("######## Resistor Color Code Calculator #######")
-userInput = checkInput(getInput())
 multiplier = {
         'black': '1',
         'brown': '10',
