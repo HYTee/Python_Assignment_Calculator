@@ -149,8 +149,8 @@ ppm = {
     'blue' : '10ppm',
     'violet' : '5ppm'
     }
-
-while(1):
+run=1
+while(run==1):
     print ("######## Resistor Color Code Calculator #######")
     userInput = checkInput(getInput())
 
@@ -162,7 +162,7 @@ while(1):
     
         Rvalue = ((x1*10)+x2)*x3
         ans = simplify_ans(Rvalue)
-        print("The 4 Band Resistor value is {} {} ".format(ans,x4))
+        print("The 4 Band Resistor value is {} {} \n".format(ans,x4))
     
     elif(len(userInput) == 5):
         x1 = int(num_code[userInput[0]])
@@ -173,7 +173,7 @@ while(1):
     
         Rvalue = ((x1*100)+(x2*10)+x3)*x4
         ans = simplify_ans(Rvalue)
-        print("The 5 Band Resistor value is {} {} ".format(ans,x5))
+        print("The 5 Band Resistor value is {} {} \n".format(ans,x5))
 
     elif(len(userInput) == 6):
         x1 = int(num_code[userInput[0]])
@@ -185,12 +185,18 @@ while(1):
     
         Rvalue = ((x1*100)+(x2*10)+x3)*x4
         ans = simplify_ans(Rvalue)
-        print("The 6 Band Resistor value is {} {} {} ".format(ans,x5,x6))
+        print("The 6 Band Resistor value is {} {} {} \n".format(ans,x5,x6))
     
-    recalc = input("Do you want to calculate another resistor value? (y/n) : ")
-    if(recalc == 'n'):
-        print("\nByeBye")
-        break
-    else:
-        print("\n")
+    run=0
+    while(1):
+        recalc = input("Do you want to calculate another resistor value? (y/n) : ")
+        if(recalc == 'y'):
+            run=1
+            print("\n")
+            break
+        if(recalc == 'n'):
+            print("\nByeBye.Thank you.")
+            break
+        else:
+            print("\nInvalid Input\n")
            
