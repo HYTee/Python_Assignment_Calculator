@@ -28,7 +28,7 @@ class Resistor():
     #            print(colors)
     #            userInput = checkInput(getInput())
     #           break
-        wrongInput=1
+        # wrongInput=1
         if(len(userInput) < 4):
             print("\nLess than 4 inputs, let's try again :)")
             
