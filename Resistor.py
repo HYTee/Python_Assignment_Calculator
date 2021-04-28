@@ -8,6 +8,12 @@ def getInput():
     #print(userInput) # check userInput
     return userInput
 
+def erroroutput(numberseq,code):
+    print("\nInvalid {} color input! Please enter the colors in the list below only. Thanks".format(numberseq))
+    print(code)
+    userInput = checkInput(getInput())
+    return userInput
+
 def checkInput(userInput):
 #    for x in userInput:
 #        if x not in colors:
@@ -26,57 +32,37 @@ def checkInput(userInput):
         
     elif(len(userInput) == 4):
         if userInput[0] not in num_code.keys():
-            print("\nInvalid 1st color input! Please enter the colors in the list below only. Thanks")
-            print(list(num_code.keys()))
-            userInput = checkInput(getInput())
+            userInput = erroroutput("1st",list(num_code.keys()))
             
         elif userInput[1] not in num_code.keys():
-            print("\nInvalid 2nd color input! Please enter the colors in the list below only. Thanks")
-            print(list(num_code.keys()))
-            userInput = checkInput(getInput())
+            userInput = erroroutput("2nd",list(num_code.keys()))
             
         elif userInput[2] not in multiplier.keys():
-            print("\nInvalid 3rd color input! Please enter the colors in the list below only. Thanks")
-            print(list(multiplier.keys()))
-            userInput = checkInput(getInput())
+            userInput = erroroutput("3rd",list(multiplier.keys()))
             
         elif userInput[3] not in tolerance.keys():
-            print("\nInvalid 4th color input! Please enter the colors in the list below only. Thanks")
-            print(list(tolerance.keys()))
-            userInput = checkInput(getInput())
+            userInput = erroroutput("4th",list(tolerance.keys()))
     
     elif(len(userInput) == 5) or (len(userInput) == 6):
            
         if userInput[0] not in num_code.keys():
-            print("\nInvalid 1st color input! Please enter the colors in the list below only. Thanks")
-            print(list(num_code.keys()))
-            userInput = checkInput(getInput())
+            userInput = erroroutput("1st",list(num_code.keys()))
             
         elif userInput[1] not in num_code.keys():
-            print("\nInvalid 2nd color input! Please enter the colors in the list below only. Thanks")
-            print(list(num_code.keys()))
-            userInput = checkInput(getInput())
+            userInput = erroroutput("2nd",list(num_code.keys()))
             
         elif userInput[2] not in num_code.keys():
-            print("\nInvalid 3rd color input! Please enter the colors in the list below only. Thanks")
-            print(list(num_code.keys()))
-            userInput = checkInput(getInput())
+            userInput = erroroutput("3rd",list(num_code.keys()))
             
         elif userInput[3] not in multiplier.keys():
-            print("\nInvalid 4th color input! Please enter the colors in the list below only. Thanks")
-            print(list(multiplier.keys()))
-            userInput = checkInput(getInput())
+            userInput = erroroutput("4th",list(multiplier.keys()))
             
         elif userInput[4] not in tolerance.keys():
-            print("\nInvalid 5th color input! Please enter the colors in the list below only. Thanks")
-            print(list(tolerance.keys()))
-            userInput = checkInput(getInput())
+            userInput = erroroutput("5th",list(tolerance.keys()))
             
         if (len(userInput) == 6):
             if userInput[5] not in ppm.keys():
-                print("\nInvalid 6th color input! Please enter the colors in the list below only. Thanks")
-                print(list(ppm.keys()))
-                userInput = checkInput(getInput())
+                userInput = erroroutput("6th",list(ppm.keys()))
                 
     return userInput
 
